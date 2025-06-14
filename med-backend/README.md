@@ -1,9 +1,17 @@
+# Medium Clone App
+
+## The whole project is divided into three modulues-
+1. **medium-backend** - This module contains the backend
+2. **common** - This module contains the common exports required by both frontend & backend like the types
+3. **medium-frontend** - This module contains the frontend
 
 
+
+### medium-backend -
 ```txt
 Routes Used Here -
 1. User Routes ->
-** Zod validation, hashing passwords
+** Add hashing passwords
     1.1 Sign Up Route - 
         - Used to sign up new user
         - Requires email, password & name(optional) as inputs
@@ -39,4 +47,16 @@ Routes Used Here -
 
     2.5 Get Bulk Blog Route
         - Used to get all the blogs 
+```
+### common
+```
+Added zod object & types for all the input objects in backend/frontend for validation. This has been pushed as a package and is imported for further use.   
+```
+
+
+### Changes Made -
+```
+1. Updated the Auth Middleware
+2. Zod Validation - for sanitizaing the body
+3. Added Zod validation to all the post routes
 ```

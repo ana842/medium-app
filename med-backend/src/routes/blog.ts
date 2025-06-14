@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
 import { verify } from 'hono/jwt';
+import { createBlogInput, updateBlogInput } from "@ana23kxx/medium-common";
 
 export const blogRouter = new Hono<{
 	Bindings: {
@@ -20,14 +21,21 @@ blogRouter.use('/*', async(c,next)=>{
         return c.json({message : "Invalid Authorization Header"})
     }
     const token = authHeader.split(' ')[1];
-    const payload = await verify(token, c.env.JWT_SECRET)
-    if(!payload || typeof(payload) !== 'object' || !payload.id){
-        c.status(401);
-        c.json({msg : "Unauthorized"});
-    }else{
-        c.set("authorID", payload.id as string);
-        await next();
+    try {
+        const payload = await verify(token, c.env.JWT_SECRET)
+        if(!payload || typeof(payload) !== 'object' || !payload.id){
+            c.status(401);
+            c.json({msg : "Unauthorized"});
+        }else{
+            c.set("authorID", payload.id as string);
+            await next();
+        }
+    } catch (error) {
+        return c.json({
+            message : "Authentication Failure"
+        })
     }
+    
 })
 
 blogRouter.post('/', async(c) => {
@@ -36,6 +44,13 @@ blogRouter.post('/', async(c) => {
     }).$extends(withAccelerate())
 
     const body = await c.req.json();
+    const {success} = createBlogInput.safeParse(body);
+        if(!success){
+            c.status(411);
+            return c.json({
+                message : "Invalid Inputs"
+            })
+        }
     const authorID = c.get("authorID");
     try {
         const createdBlog = await prisma.post.create({
@@ -63,6 +78,13 @@ blogRouter.put('/', async(c) => {
     }).$extends(withAccelerate())
 
     const body = await c.req.json();
+    const {success} = updateBlogInput.safeParse(body);
+        if(!success){
+            c.status(411);
+            return c.json({
+                message : "Invalid Inputs"
+            })
+        }
     try {
         const updatedBlog = await prisma.post.update({
             where:{
