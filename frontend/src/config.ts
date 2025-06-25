@@ -1,0 +1,1 @@
+export const BACKEN_URL = "https://med-backend.06-anamaya23.workers.dev/api/v1"

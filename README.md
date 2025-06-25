@@ -60,3 +60,9 @@ Added zod object & types for all the input objects in backend/frontend for valid
 2. Zod Validation - for sanitizaing the body
 3. Added Zod validation to all the post routes
 ```
+
+### Changes Made -
+```
+1. Added the Forontend Module - (Signup & Signin Pages)
+2. Added CORS Middleware in Backend
+```
