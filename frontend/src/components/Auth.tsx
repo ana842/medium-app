@@ -1,6 +1,6 @@
 import type { SignupInput } from "@ana23kxx/medium-common"
 import { useState } from "react"
-import { Link, Navigate, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { InputBox } from "./InputBox"
 import { PasswordBox } from "./PasswordBox"
 import axios from "axios"
