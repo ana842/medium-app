@@ -1,6 +1,6 @@
 # Medium Clone App
 
-## The whole project is divided into three modulues-
+## The whole project is divided into three modules-
 1. **medium-backend** - This module contains the backend
 2. **common** - This module contains the common exports required by both frontend & backend like the types
 3. **medium-frontend** - This module contains the frontend
