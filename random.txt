@@ -1,0 +1,126 @@
+Why React?
+
+Evolving Ecosystem:
+React's ecosystem is constantly evolving with new tools and libraries, making it a dynamic field that requires continuous learning and adaptation, which keeps the role relevant.
+
+Scalability and Performance:
+React's component-based architecture and ability to create single-page applications contribute to its popularity, especially for complex projects requiring scalability and performance.
+
+Future Trends:
+AI is not expected to replace React developers but rather augment their capabilities, allowing them to build better software faster. 
+========================================================
+
+Connection URL
+
+postgresql://neondb_owner:npg_Uj8kTQBYtph9@ep-broad-band-a156hozk.ap-southeast-1.aws.neon.tech/neondb?sslmode=require
+
+Connection pool
+DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiMDFKWEpXN0RQSjYyMlQ2QUpXM0c0QkRQV1giLCJ0ZW5hbnRfaWQiOiI4MGYxYWQxOWNiOTQ5NzNkMTUxNzhkOTZjZWQyZGI3MWI3YWVmYjRkYmM4NWFlYmRiYzQ2ZDQ4YzE1ZjZlZTZhIiwiaW50ZXJuYWxfc2VjcmV0IjoiZmQxOGYxODItZDlmNy00N2Q1LWE2NzgtOTE4ZDBhMDQ0YjgzIn0.ujWx3CHqfDnpBWm1HgKsznaF9f_ryvI5j8SfC5FIiCk"
+
+Unfucked steps ->
+1. connection string in env & pool string in wrangler
+2.  npm i prisma
+    npx prisma init
+3. Initialize the schema, remove the file path from generator client
+4. npx prisma migrate dev --name init_schema
+5. npm install prisma @prisma/client@latest @prisma/extension-accelerate
+6. npx prisma generate --no-engine
+7. 
+    import { PrismaClient } from '@prisma/client/edge'
+    import { withAccelerate } from '@prisma/extension-accelerate'
+
+    const prisma = new PrismaClient().$extends(withAccelerate())
+
+8. To define the type of DATABASE_URL in index.ts :
+    const app = new Hono<{
+	Bindings: {
+		DATABASE_URL: string
+	}
+    }>();
+
+======================================
+
+Steps followed to push the code in github ->
+1. git init
+2. git status
+3. git add .
+4. git commit -am "initial commit"
+5. remote add origin https://github.com/ana842/medium-app.git
+6. git remote -v
+7. git branch -M main || git push origin master
+** To commit changes -
+8. git commit -am "changes made"
+9. git push origin master
+
+======================================
+
+For deploying the application in Cloudflare,
+1. npx wrangler login
+2. npm run deploy
+
+======================================
+
+jwt : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkMTU0Y2ZkLTJkOGItNDViZS04ZjhiLWJhMWE4MTM5ZWExMCJ9.c3UxyYt-zKZnRon5mvAgzP_AeqkXEKOjI9QG9pggk6Y
+
+username : "ana@gmail.com",
+password : "12345678",
+ name : "Anamaya Shastri"
+
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMxMmI0ZTQ5LTcyNWMtNGJlOC1hNjFhLWJkNThlZTVmMTg2ZCJ9.cmEyHw81G2q6YhC0L4b7KsWH_8dJaUEQtVwzI_5H3js
+
+{
+    "username" : "ana2@gmail.com",
+    "password" : "12345678",
+    "name" : "Ana Shastri"
+}
+
+===================================
+changes made -
+1. Updated the Auth Middleware
+2. Zod Validation - for sanitizaing the body
+3. Added Zod validation to all the post routes
+
+
+-------------------------------------
+
+Module 1 : Cloudflare Backend
+Module 2 : Common Folder for exporting input type to frontend {Zod variables, zod types}
+Module 3 : React Frontend
+
+
+-----------------------------------
+
+Steps to initializa a typescript project
+1. npm init -y
+2. npx tsc --init
+3. rootdir -> ./src
+4. outdir -> ./dist
+5. declarations -> true {to generate the .d.ts when we are making a package}
+
+---------------------------------
+ Steps to Publish a package in npm
+ 1. npm login
+ 2. Update npm ignore and tsc -b
+ 3. npm publish --access public
+ package name : @ana23kxx/medium-common
+
+
+
+==================================================
+
+
+    // We can store the bogs from backend using one of the few ways -
+    // 1. Using Context API
+    // 2. Using Redux
+    // 3. Using LocalStorage (for small applications)
+    // 4. Using a state management library like React Query
+    // 5. Using custom hooks
+
+
+==================================================
+
+We can't have async functions inside the effect
+
+==================================================
+
