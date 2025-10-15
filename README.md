@@ -48,11 +48,20 @@ Routes Used Here -
     2.5 Get Bulk Blog Route
         - Used to get all the blogs 
 ```
-### common
+### common module
 ```
-Added zod object & types for all the input objects in backend/frontend for validation. This has been pushed as a package and is imported for further use.   
+- Added zod object & types for all the input objects in backend/frontend for validation. This has been pushed as a package and is imported for further use.   
+- Created a npm package "@ana23kxx/medium-common" to easily import input types in both frontend & backend
 ```
+### frontend module
+```
+Divided into 3 major pages - 
+1. Signin
+2. Signup
+3. Blogs
 
+Furhter all the components used in the above mentioned pages are made in separate files to increase readability and ease of future updatio
+```
 
 ### Changes Made -
 ```
@@ -66,3 +75,22 @@ Added zod object & types for all the input objects in backend/frontend for valid
 1. Added the Forontend Module - (Signup & Signin Pages)
 2. Added CORS Middleware in Backend
 ```
+<<<<<<< HEAD
+
+
+### Changes Made -
+```
+1. Updated the blog/bulk endpoint to return title, content, author name, author ID and uuid of the blog and deployed it to cloudflare
+2. Update the frontend to be dynamic using custom hooks to get the data from backend
+
+```
+
+
+### Changes Made - 
+```
+1. In the backend - Updated the blogs\id\:id endpoint to return blog data in correct format
+2. Updated the frontend page to view a single blog
+
+```
+=======
+>>>>>>> 023d4fde2b12f854d595bfed8ddb3d464b9b0903

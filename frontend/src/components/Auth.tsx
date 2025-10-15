@@ -20,7 +20,8 @@ export const Auth = ({type}:{type: "signup"|"signin"}) =>{
             const response = await axios.post(`${BACKEN_URL}/user/${type==="signup" ? "signup":"signin"}`,postInputs);
             const resData = response.data;
             console.log(resData.token)
-            localStorage.setItem("token",resData.token)
+            const tkn = "Bearer " + resData.token;
+            localStorage.setItem("token",tkn)
             navigate("/blogs")
         } catch (error) {
             alert("Error observed while sending backend request")
@@ -29,8 +30,8 @@ export const Auth = ({type}:{type: "signup"|"signin"}) =>{
     }
 
     return(
-        <div className="flex justify-center flex-col  h-screen">
-            <div className="flex justify-center ">
+        <div className="flex justify-center flex-col h-screen">
+            <div className="flex justify-center">
                 <div className="shadow-md rounded-md max-w-md px-10 py-6">
                     <div className="text-3xl font-bold text-center">
                         {type === "signin"?"Log into Account":"Create an Account"}

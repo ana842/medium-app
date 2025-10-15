@@ -112,15 +112,25 @@ blogRouter.get('/id/:id', async(c) => {
 
     const id = c.req.param("id");
     try {
-        const searchedBlog = await prisma.post.findFirst({
+        const Blog = await prisma.post.findFirst({
             where:{
                 id: id
+            },
+            select:{
+                title : true,
+                content : true,
+                author:{
+                    select : {
+                        name : true,
+                        username : true
+                    }
+                },
+                id : true
             }
         })
         c.status(200);
         return c.json({
-            message: 'Blog has been found', 
-            data: searchedBlog
+            Blog
         });
     } catch (error) {
         c.status(404)
@@ -134,7 +144,19 @@ const prisma = new PrismaClient({
     }).$extends(withAccelerate())
 
     try {
-        const blogs = await prisma.post.findMany();
+        const blogs = await prisma.post.findMany({
+            select : {
+                title : true,
+                content : true,
+                author:{
+                    select : {
+                        name : true,
+                        username : true
+                    }
+                },
+                id : true
+            }
+        });
         c.status(200);
         return c.json({
             blogs
