@@ -1,6 +1,6 @@
 # Medium Clone App
 
-## The whole project is divided into three modulues-
+## The whole project is divided into three modules-
 1. **medium-backend** - This module contains the backend
 2. **common** - This module contains the common exports required by both frontend & backend like the types
 3. **medium-frontend** - This module contains the frontend
@@ -75,6 +75,7 @@ Furhter all the components used in the above mentioned pages are made in separat
 1. Added the Forontend Module - (Signup & Signin Pages)
 2. Added CORS Middleware in Backend
 ```
+<<<<<<< HEAD
 
 
 ### Changes Made -
@@ -91,3 +92,5 @@ Furhter all the components used in the above mentioned pages are made in separat
 2. Updated the frontend page to view a single blog
 
 ```
+=======
+>>>>>>> 023d4fde2b12f854d595bfed8ddb3d464b9b0903
