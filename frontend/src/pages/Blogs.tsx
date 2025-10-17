@@ -1,5 +1,7 @@
 import { AppBar } from "../components/AppBar"
+import { AppBarSkele } from "../components/AppBarSkeleton";
 import { BlogCard } from "../components/BlogCard"
+import { BlogSkele } from "../components/BlogSkeleton";
 import { useBlogs } from "../hooks"
 
 export const Blogs = ()=>{
@@ -7,7 +9,13 @@ export const Blogs = ()=>{
     if(loading){
         return(
             <div>
-                Loading..
+                <div><AppBarSkele/></div>
+                <div className="flex flex-col justify-evenly items-center h-screen">
+                    <BlogSkele/>
+                    <BlogSkele/>
+                    <BlogSkele/>
+                    <BlogSkele/>
+                </div>
             </div>
         )
     }
