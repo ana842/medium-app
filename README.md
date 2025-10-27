@@ -94,3 +94,12 @@ Furhter all the components used in the above mentioned pages are made in separat
 ```
 =======
 >>>>>>> 023d4fde2b12f854d595bfed8ddb3d464b9b0903
+
+## Changes Made -
+```
+1. Added the Blog, AddBlog page in frontend
+2. Added the Skeletons in frontend
+
+** need to add caching using recoil
+```
+

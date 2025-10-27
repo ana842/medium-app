@@ -7,8 +7,8 @@
   //   "nodejs_compat"
   // ],
   "vars": {
-    "DATABASE_URL": "--your db connection pool URL--",
-    "JWT_SECRET" : "--you secret JWT Token--"
+    "DATABASE_URL": "--connection pool URL--",
+    "JWT_SECRET" : "--JWT--"
   },
   // "kv_namespaces": [
   //   {

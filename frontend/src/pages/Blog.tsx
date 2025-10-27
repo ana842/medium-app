@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { AppBar } from "../components/AppBar"
 import { useBlog } from "../hooks"
 import { FullBlog } from "../components/FullBlog"
+import { Spinner } from "../components/Spinner"
 
 // we will be using the atom families / selector families
 // else we can create a custom hook
@@ -14,8 +15,15 @@ export const Blog = () => {
     console.log(blog);
     if(loading){
         return(
-            <div className="content-center">
-                LMAO the page do be loading
+            <div>
+                <div>
+                    <AppBar/>
+                </div>
+                <div className="h-screen flex flex-col justify-center">
+                    <div className="flex justify-center">
+                        <Spinner/>
+                    </div>
+                </div>
             </div>
         )
     }else if(!blog){
